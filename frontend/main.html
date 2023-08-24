@@ -3,14 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CatGame</title>
+  <title>CatGame</title><!-- named cat game since site main purpose is game -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- bootstrap css library for pre-designed css features-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!-- jQuery library I will use it if I end up using js plugins like modals...-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> <!--bootstrap js library for pre-designed js features-->
+  <style> 
+  .affix {
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+  }
+  </style>
 </head>
 <body>
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row"></div>
-  <div class="row"></div>
+  <header> 
+    <div class="header-container">
+    <nav class="navigation-bar" data-spy ="affix" data-offset-top="205">
+       <ul class="pagination pagination-lg"> 
+        <li class ="navbar-brand">Catmuck.ltd</li>
+        <li class ="nav-item dropdown"> 
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/leaderboard">Leaderboard</a>
+          <a class="dropdown-item" href="#">Shop</a>
+          </div>
+        </li>
+        <li class="active"><a href="Login">Login |</a></li>
+        <li class="active"><a href="Signup">Sign up</a></li>
+        <li class="active"><a href ="Aboutus">About us</a></li>
+        <li class="active"><a href ="Contactus">Contact us</a></li>
+       </ul>
+    </div>
+    
+  </header>
+
+
+  <section> 
+    <div class="section-container">
+      <div class="jumbotron">
+        <h2>Welcome to the Cat World!</h2>
+        <p>Get ready to pounce into action and experience life as a cat like never before! 
+           Jump, dodge, and collect rewards in this purrfect adventure game. Don't make the cat 
+           wait any longer though, it is not as polite as one might think!</p>
+      </div>
+    <div class ="plane-container">
+      <div id="cat-character"></div>
+      <div id="obstacle"></div>
+      <div id="score"></div>
+      <div id="mountains"></div>
+      <div id="stars"></div>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class ="footer-container">
+      <div id="reviews-table"></div>
+      <div id ="reviews1" class="review">
+        <p>"I am not usually a fan of jumping games,
+           but this one has me hooked. The graphics are beautiful,
+           and the background sceneray is stunning. The cat is adorable,
+           and the obstacles are challenging but not too difficult.
+           Definitely worth a play."</p>
+      </div>
+
+      <div id ="reviews2" class="review">
+        <p>"This game is amazing! I love the 
+           cute cat character and the problematic gameplay. 
+           it's addictive and fun to play. Higly recommend!"</p>
+      </div>
+
+      <div id ="reviews3" class="review"></div>
+        <p>"Awesome game! As a seasoned gamer, 
+           I appreciate the challenge this game presents. Love the addition of the dog and mushroom obstacles.
+           Definitely going to come back."</p>
+
+      <div id ="reviews4" class="review"></div>
+        <p>"I love the rewards system in this game. 
+           It's so satisfying to collect fish and see your score go up.
+           The obstacles get more tricky as you progress, I'm barely surviving."</p>
+
+
+    </div>
+  </footer>
 </body>
 </html>

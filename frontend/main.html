@@ -13,47 +13,101 @@
     width: 100%;
     z-index: 99999;
   }
+
+  .nav-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-container {
+    min-height: 150px;
+  }
+
+  .review {
+    display:inline-block;
+  }
+  
+  .plane-container {
+    /*min-height: 850px;*/
+    min-height: 56vh;
+    border: 5px solid black;
+    padding: 5 5 5 5;
+  }
+
+  .below-plane-container {
+    padding: 5 5 5 5;
+    min-height: 25vh;
+  }
   </style>
 </head>
 <body>
   <header> 
     <div class="header-container">
-    <nav class="navigation-bar" data-spy ="affix" data-offset-top="205">
-       <ul class="pagination pagination-lg"> 
-        <li class ="navbar-brand">Catmuck.ltd</li>
-        <li class ="nav-item dropdown"> 
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/leaderboard">Leaderboard</a>
-          <a class="dropdown-item" href="#">Shop</a>
-          </div>
-        </li>
-        <li class="active"><a href="Login">Login |</a></li>
-        <li class="active"><a href="Signup">Sign up</a></li>
-        <li class="active"><a href ="Aboutus">About us</a></li>
-        <li class="active"><a href ="Contactus">Contact us</a></li>
-       </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navigation-bar" data-spy ="affix" data-offset-top="205">
+      <div class="nav-container">
+        <ul class="pagination pagination-lg "> 
+          <li class="nav-item"><a href="#">Catmuck.ltd</a></li>
+          <li class="nav-item dropdown"> 
+            <a class="nav-link btn btn-primary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/leaderboard">Leaderboard</a>
+            <a class="dropdown-item" href="#">Shop</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="Login">Login <!--&nbsp;&nbsp;&nbsp;&nbsp;|--></a></li>
+          <li class="nav-item"><a class="nav-link" href="Signup">Sign up</a></li>
+          <li class="nav-item"><a class="nav-link" href ="Aboutus">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href ="Contactus">Contact us</a></li>
+        </ul>
+      </div>
     </div>
     
   </header>
 
 
-  <section> 
-    <div class="section-container">
-      <div class="jumbotron">
+  <section class="bg-light py-15"><!--padding for top & bottom-->
+    <div class="section-container"><!--container for whole section-->
+      <div class="jumbotron"><!--boostrap class for higlighting text by surrounnding it with a grey box-->
+        <div class="above-plane-container text-center">
         <h2>Welcome to the Cat World!</h2>
-        <p>Get ready to pounce into action and experience life as a cat like never before! 
-           Jump, dodge, and collect rewards in this purrfect adventure game. Don't make the cat 
+        <p>Get ready to pounce into action and experience life as a cat like never before!<br> 
+           Jump, dodge, and collect rewards in this purrfect adventure game. Don't make the cat<br> 
            wait any longer though, it is not as polite as one might think!</p>
+        </div>
       </div>
-    <div class ="plane-container">
-      <div id="cat-character"></div>
-      <div id="obstacle"></div>
-      <div id="score"></div>
-      <div id="mountains"></div>
-      <div id="stars"></div>
+
+    <div class="plane-container p-25">
+      <div class="row align-items-center">
+        <div class="col-lg-10">
+          <div id="cat-character"></div>
+          <div id="obstacle"></div>
+          <div id="score"></div>
+          <div id="mountains"></div>
+          <div id="stars"></div>
+        </div>
+      </div>
+    </div>
+    <div class="below-plane-container text-center">
+      <h2>About the game</h2>
+      Get ready for an adventure like no other with our purrfect feline hero!<br> 
+      With its fluffy fur and determined spirit, this cute kitty is on a mission<br>
+      to jump over obstacles and collect rewards like a true boss. But watch<br>
+      out - the journey won't be easy. Our hero is up against two foes:<br> 
+      a grumpy dog and a poisonous mushroom on the ground.<br> 
+      To avoid getting into sticky situations, you'll need to show off your<br>
+      awesome skills! Imagine you're the captain of this kitty's adventure<br>
+      ship, guiding it through the obstacle-filled sea.<br>
+      As you guide your furry friend on this wild ride, you'll notice<br>
+      sparkling fish scattered all around. These aren't just any fish -<br>
+      they're like shiny treasures waiting for you to grab! Catch those<br>
+      fish and your cat will be over the moon. And guess what?<br> 
+      This adventure is happening right in front of you, on your computer<br>
+      or tablet. No need for a magic portal or a secret door.<br> 
+      Just tap, click, or press and you're in the world of "Catventure"!<br> 
+      So, get ready to jump, slide, and collect those fish while dodging<br>
+      for your life. Let's go! 🚀🐾</p>
     </div>
     </div>
   </section>
@@ -62,27 +116,28 @@
     <div class ="footer-container">
       <div id="reviews-table"></div>
       <div id ="reviews1" class="review">
-        <p>"I am not usually a fan of jumping games,
-           but this one has me hooked. The graphics are beautiful,
-           and the background sceneray is stunning. The cat is adorable,
-           and the obstacles are challenging but not too difficult.
+        <p>"I am not usually a fan of jumping games,<br>
+           but this one has me hooked. The graphics are beautiful,<br>
+           and the background sceneray is stunning. The cat is adorable,<br>
+           and the obstacles are challenging but not too difficult.<br>
            Definitely worth a play."</p>
       </div>
 
       <div id ="reviews2" class="review">
-        <p>"This game is amazing! I love the 
-           cute cat character and the problematic gameplay. 
+        <p>"This game is amazing! I love the<br> 
+           cute cat character and the problematic gameplay.<br> 
            it's addictive and fun to play. Higly recommend!"</p>
       </div>
 
       <div id ="reviews3" class="review"></div>
-        <p>"Awesome game! As a seasoned gamer, 
-           I appreciate the challenge this game presents. Love the addition of the dog and mushroom obstacles.
+        <p>"Awesome game! As a seasoned gamer,<br> 
+           I appreciate the challenge this game presents.<br> 
+           Love the addition of the dog and mushroom obstacles.<br>
            Definitely going to come back."</p>
 
       <div id ="reviews4" class="review"></div>
-        <p>"I love the rewards system in this game. 
-           It's so satisfying to collect fish and see your score go up.
+        <p>"I love the rewards system in this game.<br> 
+           It's so satisfying to collect fish and see your score go up.<br>
            The obstacles get more tricky as you progress, I'm barely surviving."</p>
 
 

@@ -7,7 +7,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- bootstrap css library for pre-designed css features-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!-- jQuery library I will use it if I end up using js plugins like modals...-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> <!--bootstrap js library for pre-designed js features-->
+
+
   <style> 
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+  }
+
   .affix {
     top: 0;
     width: 100%;
@@ -22,21 +29,78 @@
   .header-container {
     min-height: 150px;
   }
-
-  .review {
-    display:inline-block;
-  }
   
    .plane-container {
-    /*min-height: 850px;*/
-    min-height: 56vh;
     border: 5px solid black;
-    padding: 5 5 5 5;
+    background-image: url("/public/images/background.png"); 
+    background-size: cover;
+    background-position: center;
+    background-color: darkblue;
+    width: 84%;
   } 
+
+  #stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  z-index: 1;
+}
+
+  #mountains {
+    max-height: auto;
+    width: 100%; /* fit the container when resizing viewport*/
+    object-fit: cover; /* keeping aspect ratio of image same and covering container, no position absolute with top bc aspect ratio would break*/
+    z-index: 2;
+  }
+
+  /*#obstacle {
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    right: 5%; 
+    z-index: 3;
+
+  }*/
+
+  #cat-character {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    max-width: 8.5%;
+    z-index: 3;
+  }
+
+  #score {
+    position: absolute;
+    top: 8.5%;
+    right: 5%;
+    color: brown;
+    z-index: 4;
+  }
+
+  #start-message {
+    position: absolute;
+    top: 40%;
+    left: 37%;
+    white-space: nowrap; /* Prevent text from going to next lines */
+    font-size: 50px; 
+    color: bisque;
+    z-index: 5; /*to make sure its on top of all other container elements*/
+}
 
   .below-plane-container {
     padding: 5 5 5 5;
     min-height: 25vh;
+  }
+
+  .footer-container {
+    margin-top: 15vh;
+    width: 100%;
+  }
+
+  .review {
+    display:inline-block;
   }
   </style>
 </head>
@@ -78,14 +142,16 @@
         </div>
       </div>
 
-    <div class="plane-container p-25">
-      <div class="row align-items-center">
-        <div class="col-lg-8 offset-1">
-          <div id="cat-character"></div>
-          <div id="obstacle"></div><!-- all obstacles in one div alternating images-->
-          <div id="score"></div>
-          <div id="mountains"></div>
-          <div id="stars"></div>
+    <div class="plane-container container d-flex align-items-center justify-content-center">
+      <div class="row">
+        <div class="col-lg-12 position-relative">
+          <h2 id="start-message" class="text-center">Click Space to Start</h2>
+          <img src="/public/images/stars_2.gif" alt="Stars" id="stars">
+          <img src="/public/images/mountains.png" alt="Mountains" id="mountains">
+          <img src="/public/images/cat.png" alt="Cat Character" id="cat-character">
+          <img src="" alt="Obstacle" id="obstacle"><!-- All obstacles in one image, alternating images -->
+          <p id="score">_____________</p>
+          </div>
         </div>
       </div>
     </div>
@@ -114,7 +180,6 @@
 
   <footer>
     <div class ="footer-container">
-      <div id="reviews-table"></div>
       <div id ="reviews1" class="review">
         <p>"I am not usually a fan of jumping games,<br>
            but this one has me hooked. The graphics are beautiful,<br>
@@ -145,3 +210,6 @@
   </footer>
 </body>
 </html>
+
+
+

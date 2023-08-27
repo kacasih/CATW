@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CatGame</title><!-- named cat game since site main purpose is game -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- bootstrap css library for pre-designed css features-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!-- jQuery library I will use it if I end up using js plugins like modals...-->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> <!--bootstrap js library for pre-designed js features-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap css library for pre-designed css features-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> <!--bootstrap js library for pre-designed js features-->
 
 
   <style> 
@@ -29,6 +28,10 @@
   .header-container {
     min-height: 150px;
   }
+
+  #logo {
+    width: 8%;
+  }
   
    .plane-container {
     border: 5px solid black;
@@ -47,6 +50,21 @@
   z-index: 1;
 }
 
+#stars2 {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  width: 30%;
+  z-index: 1;
+}
+
+#stars3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  z-index: 1;
+}
   #mountains {
     max-height: auto;
     width: 100%; /* fit the container when resizing viewport*/
@@ -96,29 +114,27 @@
 
   .footer-container {
     margin-top: 15vh;
-    width: 100%;
   }
 
-  .review {
-    display:inline-block;
+  .reviews-image {
+    width: 20%;
+    margin-left: 22%;
   }
   </style>
 </head>
 <body>
   <header> 
-    <div class="header-container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navigation-bar" data-spy ="affix" data-offset-top="205">
+    <div class="header-container">  
       <div class="nav-container">
-        <ul class="pagination pagination-lg "> 
-          <li class="nav-item"><a href="#">Catmuck.ltd</a></li>
+        <ul class="nav nav-pills justify-content-center align-items-center">
+            <img id="logo" src="/public/images/aebf0388cc0acfc1a87f4f7d955cd31c41b42a36_original.jpeg" alt="cat logo">
+          <li class="nav-item">Catmuck.ltd</li>
           <li class="nav-item dropdown"> 
-            <a class="nav-link btn btn-primary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/leaderboard">Leaderboard</a>
-            <a class="dropdown-item" href="#">Shop</a>
-            </div>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">Dropdown</a>
+            <ul class="dropdown-menu"> 
+            <li class="dropdown-item"><a href="/leaderboard">Leaderboard</a></li>
+            <li class="dropdown-item"><a href="#">Shop</a></li>
+            </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="Login">Login <!--&nbsp;&nbsp;&nbsp;&nbsp;|--></a></li>
           <li class="nav-item"><a class="nav-link" href="Signup">Sign up</a></li>
@@ -135,7 +151,7 @@
     <div class="section-container"><!--container for whole section-->
       <div class="jumbotron"><!--boostrap class for higlighting text by surrounnding it with a grey box-->
         <div class="above-plane-container text-center">
-        <h2>Welcome to the Cat World!</h2>
+        <h1>Welcome to the Cat World!</h2>
         <p>Get ready to pounce into action and experience life as a cat like never before!<br> 
            Jump, dodge, and collect rewards in this purrfect adventure game. Don't make the cat<br> 
            wait any longer though, it is not as polite as one might think!</p>
@@ -145,8 +161,10 @@
     <div class="plane-container container d-flex align-items-center justify-content-center">
       <div class="row">
         <div class="col-lg-12 position-relative">
-          <h2 id="start-message" class="text-center">Click Space to Start</h2>
+          <p id="start-message" class="text-center">Click Space to Start</p>
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars">
+          <img src="/public/images/stars_2.gif" alt="Stars" id="stars2">
+          <img src="/public/images/stars_2.gif" alt="Stars" id="stars3">
           <img src="/public/images/mountains.png" alt="Mountains" id="mountains">
           <img src="/public/images/cat.png" alt="Cat Character" id="cat-character">
           <img src="" alt="Obstacle" id="obstacle"><!-- All obstacles in one image, alternating images -->
@@ -179,32 +197,39 @@
   </section>
 
   <footer>
-    <div class ="footer-container">
-      <div id ="reviews1" class="review">
-        <p>"I am not usually a fan of jumping games,<br>
-           but this one has me hooked. The graphics are beautiful,<br>
-           and the background sceneray is stunning. The cat is adorable,<br>
-           and the obstacles are challenging but not too difficult.<br>
-           Definitely worth a play."</p>
+    <div class="footer-container container-fluid text-center">
+      <div class="row">
+        <div class=col-lg-6 id="reviews1" class="review">
+          <img src="/public/images/Screenshot 2023-08-27 at 13.42.42.png" class="img-fluid reviews-image rounded-circle float-start" alt="image of first reviewer">
+          <p>"I am not usually a fan of jumping games,<br>
+            but this one has me hooked. The graphics are beautiful,<br>
+            and the background scenery is stunning. The cat is adorable,<br>
+            and the obstacles are challenging but not too difficult.<br>
+            Definitely worth a play."</p>
+        </div>
+  
+        <div class="col-lg-6 review" id="reviews2">
+          <img src="/public/images/Screenshot 2023-08-27 at 13.40.21.png" class="img-fluid reviews-image rounded-circle float-start" alt="image of second reviewer">
+          <p>"This game is amazing! I love the cute cat character and the<br> 
+            problematic gameplay. it's addictive and fun to play.<br>
+            Highly recommend!"</p>
+        </div>
       </div>
-
-      <div id ="reviews2" class="review">
-        <p>"This game is amazing! I love the<br> 
-           cute cat character and the problematic gameplay.<br> 
-           it's addictive and fun to play. Higly recommend!"</p>
-      </div>
-
-      <div id ="reviews3" class="review"></div>
-        <p>"Awesome game! As a seasoned gamer,<br> 
-           I appreciate the challenge this game presents.<br> 
-           Love the addition of the dog and mushroom obstacles.<br>
-           Definitely going to come back."</p>
-
-      <div id ="reviews4" class="review"></div>
-        <p>"I love the rewards system in this game.<br> 
-           It's so satisfying to collect fish and see your score go up.<br>
-           The obstacles get more tricky as you progress, I'm barely surviving."</p>
-
+      <div class="row">  
+        <div class="col-lg-6 review" id="reviews3">
+          <img src="/public/images/Screenshot 2023-08-27 at 13.34.39.png" class="img-fluid reviews-image rounded-circle float-start" alt="image of third reviewer">
+          <p>"Awesome game! As a seasoned gamer, I appreciate the challenge<br> 
+            this game presents. Love the addition of the dog and mushroom<br>
+            obstacles. Definitely going to come back."</p>
+        </div>
+  
+        <div class="col-lg-6 review" id="reviews4">
+          <img src="/public/images/Screenshot 2023-08-27 at 13.33.41.png" class="img-fluid reviews-image rounded-circle float-start" alt="image of last reviewer">
+          <p>"I love the rewards system in this game. It's so satisfying to collect<br> 
+            fish and see your score go up. The obstacles get more tricky as<br>
+            you progress, I'm barely surviving."</p>
+        </div>
+      </div>      
 
     </div>
   </footer>

@@ -4,8 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>contactus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap css library for pre-designed css features-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> <!--bootstrap js library for pre-designed js features-->
+  <link href='https://fonts.googleapis.com/css?family=Irish Grover' rel='stylesheet'>
 </head>
+<style>
+ body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+ }
+
+ .input-fields {
+  width: 400px; 
+  height: 100px; 
+  margin-top: 20px;
+  border-style: ridge;
+}
+
+#submit-button {
+  background-color: greenyellow;
+  width: 150px;
+  margin-left: 120px;
+  margin-right: 30px;
+}
+</style>
 <body>
+  <h1 style="font-family: Irish Grover; margin-bottom: 12%;">Contact us</h1>
+  <p style="font-size: xx-large;" class="Irish grover">Have any questions?</p>
+  <p style="font-size: x-large;"> Fill in this quick form and we will get back to you!</p>
   
+  <div class="contact-form">
+    <div class="row">
+      <div class="col-lg-4">
+        <input type="search" placeholder="Name" class="input-fields">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <input type="email" placeholder="Email" class="input-fields">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <input type="text" placeholder="Subject" class="input-fields">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <input type="text" placeholder="Message" class="input-fields">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <input type="submit" placeholder="Submit" id="submit-button" class="input-fields rounded-circle">
+      </div>
+    </div>
+  </div>
 </body>
 </html>

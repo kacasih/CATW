@@ -14,19 +14,64 @@
         width: 5%;
     }
 
-    #search-image {
-        width: 14%;
+    .search-input-container {
+        position: relative;
+   
     }
+
+    #search-input {
+        font-size: larger;
+        height: 70px;
+        margin-top: 35%;
+    }
+
+    #search-image {
+        position: absolute;
+        width: 30%;
+        margin-top: 35%;
+        right: 10px;
+
+    }
+
+    .leaderboard-table {
+        margin-top: 15%;
+    }
+
+    .table-headings {
+        padding: 5px 5px 5px 5px;
+    }
+
+    #user-heading {
+        width: 100px;
+    }
+
+    #score-heading {
+        width: 120px;
+    }
+
+    #date-heading {
+        width: 140px;
+    }
+    
 </style>
 <body>
     <div class="leaderboard-container d-flex justify-content-center align-items-center flex-column">
         <img src="/public/images/199-1993421_cat-icon-cute-cat-icon.png.jpeg" id="top-cat-image" class="rounded-circle" alt="jumping cat image">
         <h1>Leaderboards</h1>
-        <label for="search-input">
-            <img src="/public/images/cat-search-icon.png" id="search-image" alt="cat search icon">
-        </label>
-        <input type="search" placeholder="Search a user" name="search-input">
+        <div class="search-input-container">
+            <input type="search" id="search-input" placeholder="Search a user" name="search-input">
+            <img src="/public/images/641885.png" id="search-image" alt="cat search icon">
+        </div>
+        <div class="table-responsive">
+            <table class="leaderboard-table table-bordered">
+                <tr>
+                    <th id="rank-heading" class="table-headings">Rank</th>
+                    <th id="user-heading" class="table-headings">User</th>
+                    <th id="score-heading" class="table-headings">Score</th>
+                    <th id="date-heading" class="table-headings">Date Achieved</th>
+                </tr>    
+            </table>
+        </div>
     </div>
-
 </body>
 </html>

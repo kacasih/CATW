@@ -24,21 +24,30 @@
   #signup-button {
     margin-top: 3%;
   }
+
+  .message {
+    margin-top: 3%;
+  }
   
 </style>
 <body>
   <h1 class="text-center">Create an Account</h1>
-  <div class="form-container">
-    <label for="username">Username</label>
-    <input type="search" name="username"> 
-    <label for="email">Email</label>
-    <input type="email" name="email">
-    <label for="password">Password</label>
-    <input type="password" name="password">
-    <label for="confirmpassword">Confirm Password</label>
-    <input type="password" name="confirmpassword"> 
-    <button id="signup-button">Sign up</button>
-  </div>
+  <form method="post">
+    <div class="form-container">
+      <label for="username">Username</label>
+      <input type="search" name="username"> 
+      <label for="email">Email</label>
+      <input type="email" name="email">
+      <label for="password">Password</label>
+      <input type="password" name="password">
+      <label for="confirmpassword">Confirm Password</label>
+      <input type="password" name="confirmpassword"> 
+      <button id="signup-button">Sign up</button>
+      <% if (message) { %>
+        <h4 class="message alert alert-danger"><%= message %></h4>
+        <% } %>
+    </div>
+  </form>
 
 </body>
 </html>

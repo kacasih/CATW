@@ -6,121 +6,146 @@
   <title>CatGame</title><!-- named cat game since site main purpose is game -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap css library for pre-designed css features-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> <!--bootstrap js library for pre-designed js features-->
-
+  <link href="frontend/main.css" rel="stylesheet"> 
+  <script src="frontend/catgame.js"></script>
+  
 
   <style> 
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-  }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+    }
 
-  .affix {
+    .affix {
+      top: 0;
+      width: 100%;
+      z-index: 99999;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .header-container {
+      min-height: 150px;
+    }
+
+    #logo {
+      width: 8%;
+    }
+    
+    .plane-container {
+      border: 5px solid black;
+      background-image: url("/public/images/background.png"); 
+      background-size: cover;
+      background-position: center;
+      background-color: darkblue;
+      width: 84%;
+    } 
+
+    #stars {
+    position: absolute;
     top: 0;
-    width: 100%;
-    z-index: 99999;
-  }
+    left: 0;
+    width: 30%;
+    z-index: 1;
+    }
 
-  .nav-container {
-    display: flex;
-    justify-content: center;
-  }
+    #stars2 {
+      position: absolute;
+      top: 0;
+      left: 35%;
+      width: 30%;
+      z-index: 1;
+    }
 
-  .header-container {
-    min-height: 150px;
-  }
+    #stars3 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30%;
+      z-index: 1;
+    }
+    #mountains {
+      max-height: auto;
+      width: 100%; /* fit the container when resizing viewport*/
+      object-fit: cover; /* keeping aspect ratio of image same and covering container, no position absolute with top bc aspect ratio would break*/
+      z-index: 2;
+    }
 
-  #logo {
-    width: 8%;
-  }
-  
-   .plane-container {
-    border: 5px solid black;
-    background-image: url("/public/images/background.png"); 
-    background-size: cover;
-    background-position: center;
-    background-color: darkblue;
-    width: 84%;
-  } 
+    #obstacle {
+      position: absolute;
+      bottom: 0;
+      right: 5%;
+      max-width: 8.5%; 
+      z-index: 3;
+      animation-name: obstacleleft;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
 
-  #stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30%;
-  z-index: 1;
-}
+    @keyframes obstacleleft{
+      0% {right: 5%;}
+      25% {right: 25%;}
+      50% {right: 45%;}
+      75% {right: 65%;}
+      100% {right: 85%;}
+    }
 
-#stars2 {
-  position: absolute;
-  top: 0;
-  left: 35%;
-  width: 30%;
-  z-index: 1;
-}
+    @keyframes catjumping {
+      0% {bottom: 0;}
+      50% {bottom: 37%;}
+      100% {bottom: 0; left: 10%;}
+    }
+    #cat-character {
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      max-width: 8.5%;
+      z-index: 3;
+    }
 
-#stars3 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30%;
-  z-index: 1;
-}
-  #mountains {
-    max-height: auto;
-    width: 100%; /* fit the container when resizing viewport*/
-    object-fit: cover; /* keeping aspect ratio of image same and covering container, no position absolute with top bc aspect ratio would break*/
-    z-index: 2;
-  }
+    .cat-animation {
+      animation-name: catjumping;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    }
 
-  /*#obstacle {
-    background-size: cover;
-    position: absolute;
-    bottom: 0;
-    right: 5%; 
-    z-index: 3;
+    #score {
+      position: absolute;
+      border-bottom: 4px solid red;
+      top: 8.5%;
+      right: 9%;
+      color: red;
+      z-index: 4;
+    }
 
-  }*/
+    #start-message {
+      position: absolute;
+      top: 40%;
+      left: 37%;
+      white-space: nowrap; /* Prevent text from going to next lines */
+      font-size: 50px; 
+      color: bisque;
+      z-index: 5; /*to make sure its on top of all other container elements*/
+    }
 
-  #cat-character {
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    max-width: 8.5%;
-    z-index: 3;
-  }
+    .below-plane-container {
+      padding: 5 5 5 5;
+      min-height: 25vh;
+    }
 
-  #score {
-    position: absolute;
-    border-bottom: 4px solid red;
-    top: 8.5%;
-    right: 9%;
-    color: red;
-    z-index: 4;
-  }
+    .footer-container {
+      margin-top: 15vh;
+    }
 
-  #start-message {
-    position: absolute;
-    top: 40%;
-    left: 37%;
-    white-space: nowrap; /* Prevent text from going to next lines */
-    font-size: 50px; 
-    color: bisque;
-    z-index: 5; /*to make sure its on top of all other container elements*/
-}
-
-  .below-plane-container {
-    padding: 5 5 5 5;
-    min-height: 25vh;
-  }
-
-  .footer-container {
-    margin-top: 15vh;
-  }
-
-  .reviews-image {
-    width: 20%;
-    margin-left: 22%;
-  }
+    .reviews-image {
+      width: 20%;
+      margin-left: 22%;
+    }
   </style>
 </head>
 <body>
@@ -167,8 +192,8 @@
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars2">
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars3">
           <img src="/public/images/mountains.png" alt="Mountains" id="mountains">
-          <img src="/public/images/cat.png" alt="Cat Character" id="cat-character">
-          <img src="" alt="Obstacle" id="obstacle"><!-- All obstacles in one image, alternating images -->
+          <img src="/public/images/cat.png" alt="Cat Character" id="cat-character" name="cat-character">
+          <img src="/public/images/dog.png" alt="Obstacle" id="obstacle"><!-- All obstacles in one image, alternating images -->
           <p id="score">Best score:</p>
           </div>
         </div>

@@ -32,7 +32,7 @@
     }
 
     #logo {
-      width: 8%;
+      width: 6%;
     }
     
     .plane-container {
@@ -78,12 +78,13 @@
       position: absolute;
       bottom: 0;
       right: 5%;
-      max-width: 8.5%; 
+      max-width: 7%; 
       z-index: 3;
       animation-name: obstacleleft;
       animation-duration: 4s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+      animation-play-state: paused;
     }
 
     @keyframes obstacleleft{
@@ -91,7 +92,8 @@
       25% {right: 25%;}
       50% {right: 45%;}
       75% {right: 65%;}
-      100% {right: 85%;}
+      85% {right: 84;}
+      95% {right: 93%;}
     }
 
     @keyframes catjumping {
@@ -103,7 +105,7 @@
       position: absolute;
       bottom: 0;
       left: 5%;
-      max-width: 8.5%;
+      max-width: 8%;
       z-index: 3;
     }
 
@@ -125,11 +127,12 @@
 
     #start-message {
       position: absolute;
+      display: block;
       top: 40%;
-      left: 37%;
+      left: 27%;
       white-space: nowrap; /* Prevent text from going to next lines */
-      font-size: 50px; 
-      color: bisque;
+      font-size: 3.1vw; 
+      color: greenyellow;
       z-index: 5; /*to make sure its on top of all other container elements*/
     }
 
@@ -152,20 +155,20 @@
   <header> 
     <div class="header-container">  
       <div class="nav-container">
-        <ul class="nav nav-pills justify-content-center align-items-center">
+        <ul class="nav nav-pills justify-content-center align-items-center fixed-top">
             <img id="logo" src="/public/images/aebf0388cc0acfc1a87f4f7d955cd31c41b42a36_original.jpeg" alt="cat logo">
           <li class="nav-item">Catmuck.ltd</li>
           <li class="nav-item dropdown"> 
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">Dropdown</a>
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" data-bs-toggle="dropdown">Dropdown</a>
             <ul class="dropdown-menu"> 
             <li class="dropdown-item"><a href="/leaderboard">Leaderboard</a></li>
             <li class="dropdown-item"><a href="#">Shop</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="Login">Login <!--&nbsp;&nbsp;&nbsp;&nbsp;|--></a></li>
-          <li class="nav-item"><a class="nav-link" href="Signup">Sign up</a></li>
-          <li class="nav-item"><a class="nav-link" href ="Aboutus">About us</a></li>
-          <li class="nav-item"><a class="nav-link" href ="Contactus">Contact us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Login">Login <!--&nbsp;&nbsp;&nbsp;&nbsp;|--></a></li>
+          <li class="nav-item"><a class="nav-link active" href="Signup">Sign up</a></li>
+          <li class="nav-item"><a class="nav-link active" href ="Aboutus">About us</a></li>
+          <li class="nav-item"><a class="nav-link active" href ="Contactus">Contact us</a></li>
         </ul>
       </div>
     </div>
@@ -187,14 +190,14 @@
     <div class="plane-container container d-flex align-items-center justify-content-center">
       <div class="row">
         <div class="col-lg-12 position-relative">
-          <p id="start-message" class="text-center">Click Space to Start</p>
+          <p id="start-message" class="text-center">CLICK SPACE TO START</p>
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars">
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars2">
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars3">
           <img src="/public/images/mountains.png" alt="Mountains" id="mountains">
           <img src="/public/images/cat.png" alt="Cat Character" id="cat-character" name="cat-character">
           <img src="/public/images/dog.png" alt="Obstacle" id="obstacle"><!-- All obstacles in one image, alternating images -->
-          <p id="score">Best score:</p>
+          <p id="score"></p>
           </div>
         </div>
       </div>

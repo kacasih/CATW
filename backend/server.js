@@ -3,7 +3,9 @@ const mysql = require('mysql2/promise');
 const path = require('path');
 const ejs = require('ejs');
 const bodyparser = require('body-parser');
-const crypto = require('crypto');
+const session = require('express-session');
+const MYSQLstore = require('express-mysql-session')(session);
+const {format} = require('date-fns');
 
 const app = express();
 
@@ -16,7 +18,19 @@ const pool = mysql.createPool({
   socketPath: '/tmp/mysql.sock'
 })
 
+const sessionStore = new MYSQLstore({
+expiration: 86400000,
+createDatabaseTable: true,
+}, pool);
 
+app.use(
+  session( {
+  secret: '1234567894895834574879475847984759387592273847857473857835782876455',
+  resave: false,
+  saveUninitialized: true,
+  store: sessionStore,
+  })
+);
 
 app.use(express.urlencoded({extended:'false'}));
 app.use(express.json());
@@ -37,13 +51,13 @@ app.get('/login', (req,res) => {
 app.post('/login', async (req,res) => {
   const {email, password} = req.body;
   console.log(req.body);
-  let connection;
   try {
     const connection = await pool.getConnection();
     console.log('successful database connection');
-    const [loginresult] = await connection.execute('SELECT password FROM users WHERE email = ?', [email]);
+    const [loginresult] = await connection.execute('SELECT id, password FROM users WHERE email = ?', [email]);
     console.log(loginresult);
-    if (loginresult.length > 0 &&password === loginresult[0].password) {
+    if (loginresult.length > 0 && password === loginresult[0].password) {
+      req.session.user = {id: loginresult[0].id};
       res.redirect('/');
     }
     else {
@@ -71,13 +85,14 @@ app.post('/signup', async (req,res) => {//asynchronous function so that multiple
         console.log('email already in use');
         res.render('signup', {message: 'email already in use'});
         return;
-      } else if (password!=confirmpassword) {
+      } else if (password != confirmpassword) {
           console.log('passwords do not match');
           res.render('signup', {message: 'password and confirm passsword do not match'});
           return;
         }
 
       const result = await connection.query('INSERT INTO users (username,email,password) VALUES (?,?,?)',[username, email, password]);
+      req.session.user = {id: result[0].insertId};
       res.render('signup', {message: 'Success signing up'});
       console.log("Database manipulated");
    
@@ -99,9 +114,40 @@ app.get('/contactus', (req,res) => {
   res.render('contactus');
 });
 
-app.get('/leaderboard', (req,res) => {
-  res.render('leaderboard');
+app.get('/leaderboard', async (req,res) => {
+  try {
+  connection = await pool.getConnection();
+  const [top10] = await connection.execute('SELECT username, bestscore, date from users ORDER BY bestscore DESC LIMIT 10');
+  res.render('leaderboard', {top10});
+  } catch (error) {
+    res.status(500);
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
 });
+
+app.post('/bestscoreroute', async (req,res) => {
+  console.log('connected to score route');
+  try {
+    const {bestscore} = req.body;
+    console.log(bestscore)
+    const connection = await pool.getConnection();
+    const userid = req.session.user.id;
+    console.log(userid);
+    if (!userid) {
+      res.status(401);
+    }
+    const date = new Date();
+    const formatdate = format(date, 'yyyy-MM-dd');
+    await connection.execute("Update users SET bestscore = ?, date = ? Where id = ?", [bestscore, formatdate, userid]);
+    res.json({success: true});
+  } catch (error) {
+    res.status(500);
+  }
+});
+
 app.listen(4000, () => {
 console.log('server listening on port 4000')
 });

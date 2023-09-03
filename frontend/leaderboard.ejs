@@ -7,7 +7,7 @@
     <title>leaderboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap css library for pre-designed css features-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script> <!--bootstrap js library for pre-designed js features-->
-
+ 
 </head>
 <style>
     #top-cat-image {
@@ -69,9 +69,28 @@
                     <th id="user-heading" class="table-headings">User</th>
                     <th id="score-heading" class="table-headings">Score</th>
                     <th id="date-heading" class="table-headings">Date Achieved</th>
-                </tr>    
+                </tr>  
+                <tbody id="data-body">
+                    <% let rank = 1; %>
+                    <% top10.forEach(user => { %>
+                        <tr>
+                            <td><%= rank++ %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.bestscore %></td> 
+                            <td><%= user.date.toLocaleDateString() %></td> 
+                    <% }); %>  
+                </tbody>
             </table>
         </div>
     </div>
 </body>
+<!--<script>
+    const leaderboardtablebody = document.getElementById('data-body');
+    for (let i = 1; i <= 10; i++) {
+      const tablerow = document.createElement('tr');
+      tablerow.id = i;
+      tablerow.innerHTML = `<td>${i}</td> <td></td> <td></td> <td></td>`;
+      leaderboardtablebody.appendChild(tablerow);
+    }
+    </script>
 </html>

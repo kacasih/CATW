@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const paths = ["/public/images/mushroom.png", "/public/images/dog.png", "/public/images/flyy.png"];
   var counter = 0;
@@ -33,7 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       scorecount += 1;
       score.innerHTML = `Score:  `+ scorecount;
-      if (scorecount > bestscore) bestscore = scorecount;
+      if (scorecount > bestscore) {
+        bestscore = scorecount; 
+      }
       UpdateObstacleDuration();
     }, scoreduration);
 
@@ -110,6 +113,22 @@ function collisioncheck() {
 
 
   function stopGame() {
+    fetch('/bestscoreroute', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',//so backend knows that new score is json
+      },
+      body: JSON.stringify({bestscore}),
+    })
+      .then((response) => {
+      if (!response.ok) {
+        throw new Error('could not connect to backend');
+      }
+      else {
+        console.log('success' + bestscore);
+      }
+      return response.json();
+    });
     isRunning = false;
     clearInterval(scorecounting);
     clearInterval(obstaclecounting);
@@ -142,5 +161,5 @@ function collisioncheck() {
           }
       }
     }
-  });
+  });  
 });

@@ -98,8 +98,12 @@
 
     @keyframes catjumping {
       0% {bottom: 0;}
-      50% {bottom: 37%;}
-      100% {bottom: 0; left: 10%;}
+      2% {bottom: 2%; content: url("/public/images/catjumping.png")}
+      /*42% {bottom: 24%; content: url("/public/images/catjumping.png")}*/
+      48% {bottom: 33%; content: url("/public/images/cat.png")}
+      59% {bottom: 37%; content: url("/public/images/catfalling.png")}
+      /*79% {bottom: 17%; content: url("/public/images/catfalling.png")}*/
+      100% {bottom: 0; content: url("/public/images/cat.png")}
     }
     #cat-character {
       position: absolute;
@@ -107,11 +111,12 @@
       left: 5%;
       max-width: 8%;
       z-index: 3;
+      content: url("/public/images/cat.png");
     }
 
     .cat-animation {
       animation-name: catjumping;
-      animation-duration: 1.5s;
+      animation-duration: 1.8s;
       animation-timing-function: ease-in-out;
       animation-fill-mode: forwards;
     }
@@ -190,14 +195,14 @@
     <div class="plane-container container d-flex align-items-center justify-content-center">
       <div class="row">
         <div class="col-lg-12 position-relative">
-          <p id="start-message" class="text-center">CLICK SPACE TO START</p>
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars">
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars2">
           <img src="/public/images/stars_2.gif" alt="Stars" id="stars3">
           <img src="/public/images/mountains.png" alt="Mountains" id="mountains">
-          <img src="/public/images/cat.png" alt="Cat Character" id="cat-character" name="cat-character">
+          <div id="cat-character" name="cat-character"></div>
           <img src="/public/images/dog.png" alt="Obstacle" id="obstacle"><!-- All obstacles in one image, alternating images -->
           <p id="score"></p>
+          <p id="start-message" class="text-center">CLICK SPACE TO START</p>
           </div>
         </div>
       </div>
